@@ -18,35 +18,35 @@ class CommunicatorConfiguration(EndpointConfiguration):
     __api_key_id = None
     __secret_api_key = None
 
-    def __init__(self, properties=None, api_endpoint=False, api_key_id=False,
-                 secret_api_key=False, authorization_type=False,
-                 connect_timeout=False, socket_timeout=False,
-                 max_connections=False, proxy_configuration=False,
-                 integrator=False, shopping_cart_extension=False):
+    def __init__(self, properties=None, api_endpoint=None, api_key_id=None,
+                 secret_api_key=None, authorization_type=None,
+                 connect_timeout=None, socket_timeout=None,
+                 max_connections=None, proxy_configuration=None,
+                 integrator=None, shopping_cart_extension=None):
         if properties:
             super(CommunicatorConfiguration, self).__init__(properties, "direct.api")
             if properties.sections() and properties.options("DirectSDK"):
                 authorization = self.__get_property(properties, "direct.api.authorizationType", AuthorizationType.V1HMAC)
                 self.__authorization_type = AuthorizationType.get_authorization(authorization)
-        if api_endpoint:
+        if api_endpoint is not None:
             self.api_endpoint = api_endpoint
-        if api_key_id:
+        if api_key_id is not None:
             self.api_key_id = api_key_id
-        if secret_api_key:
+        if secret_api_key is not None:
             self.secret_api_key = secret_api_key
-        if authorization_type:
-            self.authorization_type = authorization_type
-        if connect_timeout:
+        if authorization_type is not None:
+            self.authorization_type = AuthorizationType.get_authorization(authorization_type)
+        if connect_timeout is not None:
             self.connect_timeout = connect_timeout
-        if socket_timeout:
+        if socket_timeout is not None:
             self.socket_timeout = socket_timeout
-        if max_connections:
+        if max_connections is not None:
             self.max_connections = max_connections
-        if proxy_configuration:
+        if proxy_configuration is not None:
             self.proxy_configuration = proxy_configuration
-        if integrator:
+        if integrator is not None:
             self.integrator = integrator
-        if shopping_cart_extension:
+        if shopping_cart_extension is not None:
             self.shopping_cart_extension = shopping_cart_extension
 
     @property
@@ -93,7 +93,7 @@ class CommunicatorConfiguration(EndpointConfiguration):
 
     @authorization_type.setter
     def authorization_type(self, authorization_type):
-        self.__authorization_type = authorization_type
+        self.__authorization_type = AuthorizationType.get_authorization(authorization_type)
 
     @staticmethod
     def __get_property(properties, key, fallback):

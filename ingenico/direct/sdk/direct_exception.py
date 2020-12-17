@@ -7,5 +7,5 @@ class DirectException(ApiException):
     went wrong at the Ingenico ePayments platform or further downstream.
     """
 
-    def __init__(self, status_code, response_body, error_id, errors, message="the Ingenico ePayments platform returned an error response"):
-        super(DirectException, self).__init__(status_code, response_body, error_id, errors, message)
+    def __init__(self, status_code, response_body, error_id, error_response, message="the Ingenico ePayments platform returned an error response"):
+        super(DirectException, self).__init__(status_code, response_body, error_id, error_response, message)

@@ -7,7 +7,6 @@ class AuthorizationException(ApiException):
     authorization failed.
     """
 
-    def __init__(self, status_code, response_body, error_id, errors,
+    def __init__(self, status_code, response_body, error_id, error_response,
                  message="the Ingenico ePayments platform returned an authorization error response"):
-        super(AuthorizationException, self).__init__(status_code, response_body,
-                                                     error_id, errors, message)
+        super(AuthorizationException, self).__init__(status_code, response_body, error_id, error_response, message)

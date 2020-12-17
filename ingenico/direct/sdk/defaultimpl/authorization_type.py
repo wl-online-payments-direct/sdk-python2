@@ -5,7 +5,7 @@ class AuthorizationType:
 
     @staticmethod
     def get_authorization(name):
-        if name in AuthorizationType.AUTHORIZATION_TYPES:
-            return name
-        else:
-            raise RuntimeError("Authorization '{}' not found".format(name))
+        for authType in AuthorizationType.AUTHORIZATION_TYPES:
+            if name.lower() == authType.lower():
+                return authType
+        raise RuntimeError("Authorization '{}' not found".format(name))

@@ -528,7 +528,7 @@ def getPaymentProduct_request(request, test):
     test.assertEqual(request.uri, '/v2/1/products/1?countryCode=BE&currencyCode=EUR&amount=1000')
 
     headers = request.get_header_list()
-    test.assertHeaderIn(('Authorization', '"********"'), headers)
+    test.assertHeaderIn(('Authorization', '"***"'), headers)
     test.assertTrue(len(filter((lambda header: header[0] == 'Date'), headers)))
     test.assertTrue(len(filter((lambda header: header[0] == 'X-GCS-ServerMetaInfo'), headers)))
 
@@ -555,7 +555,7 @@ def createPayment_failure_invalidCardNumber_request(request, test):
     test.assertEqual(request.uri, '/v2/1/payments')
 
     headers = request.get_header_list()
-    test.assertHeaderIn(('Authorization', '"********"'), headers)
+    test.assertHeaderIn(('Authorization', '"***"'), headers)
     test.assertTrue(len(filter((lambda header: header[0] == 'Date'), headers)))
     test.assertTrue(len(filter((lambda header: header[0] == 'X-GCS-ServerMetaInfo'), headers)))
     test.assertHeaderIn(('Content-Type', '"application/json"'), headers)
@@ -588,7 +588,7 @@ def createPayment_failure_rejected_request(request, test):
     test.assertEqual(request.uri, '/v2/1/payments')
 
     headers = request.get_header_list()
-    test.assertHeaderIn(('Authorization', '"********"'), headers)
+    test.assertHeaderIn(('Authorization', '"***"'), headers)
     test.assertTrue(len(filter((lambda header: header[0] == 'Date'), headers)))
     test.assertTrue(len(filter((lambda header: header[0] == 'X-GCS-ServerMetaInfo'), headers)))
     test.assertHeaderIn(('Content-Type', '"application/json"'), headers)
@@ -624,7 +624,7 @@ def createPayment_request(request, test):
     test.assertEqual(request.uri, '/v2/1/payments')
 
     headers = request.get_header_list()
-    test.assertHeaderIn(('Authorization', '"********"'), headers)
+    test.assertHeaderIn(('Authorization', '"***"'), headers)
     test.assertTrue(len(filter((lambda header: header[0] == 'Date'), headers)))
     test.assertTrue(len(filter((lambda header: header[0] == 'X-GCS-ServerMetaInfo'), headers)))
     test.assertHeaderIn(('Content-Type', '"application/json"'), headers)
@@ -643,7 +643,7 @@ def createPayment_unicode_request(request, test):
     test.assertEqual(request.uri, '/v2/1/payments')
 
     headers = request.get_header_list()
-    test.assertHeaderIn(('Authorization', '"********"'), headers)
+    test.assertHeaderIn(('Authorization', '"***"'), headers)
     test.assertTrue(len(list(filter((lambda header: header[0] == 'Date'), headers))))
     test.assertTrue(len(list(filter((lambda header: header[0] == 'X-GCS-ServerMetaInfo'), headers))))
     test.assertHeaderIn(('Content-Type', '"application/json"'), headers)
@@ -689,7 +689,7 @@ def deleteToken_request(request, test):
     test.assertEqual(request.uri, '/v2/1/tokens/5678')
 
     headers = request.get_header_list()
-    test.assertHeaderIn(('Authorization', '"********"'), headers)
+    test.assertHeaderIn(('Authorization', '"***"'), headers)
     test.assertTrue(len(filter((lambda header: header[0] == 'Date'), headers)))
     test.assertTrue(len(filter((lambda header: header[0] == 'X-GCS-ServerMetaInfo'), headers)))
 
@@ -729,7 +729,7 @@ def testConnection_request(request, test):
     test.assertEqual(request.uri, '/v2/1/services/testconnection')
 
     headers = request.get_header_list()
-    test.assertHeaderIn(('Authorization', '"********"'), headers)
+    test.assertHeaderIn(('Authorization', '"***"'), headers)
     test.assertTrue(len(filter((lambda header: header[0] == 'Date'), headers)))
     test.assertTrue(len(filter((lambda header: header[0] == 'X-GCS-ServerMetaInfo'), headers)))
 

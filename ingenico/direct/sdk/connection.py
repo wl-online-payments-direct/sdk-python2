@@ -62,3 +62,9 @@ class Connection(LoggingCapable):
         :raise: CommunicationException when an exception occurred communicating
          with the Ingenico ePayments platform
         """
+
+    @abstractmethod
+    def close(self):
+        """
+        Close the connection
+        """

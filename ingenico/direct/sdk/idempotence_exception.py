@@ -7,9 +7,9 @@ class IdempotenceException(ApiException):
     idempotent request failed because the first request has not finished yet.
     """
 
-    def __init__(self, idempotence_key, idempotence_request_timestamp, status_code, response_body, error_id, errors,
+    def __init__(self, idempotence_key, idempotence_request_timestamp, status_code, response_body, error_id, error_response,
                  message="the Ingenico ePayments platform returned a duplicate request error response"):
-        super(IdempotenceException, self).__init__(status_code, response_body, error_id, errors, message)
+        super(IdempotenceException, self).__init__(status_code, response_body, error_id, error_response, message)
         self.__idempotence_key = idempotence_key
         self.__idempotence_request_timestamp = idempotence_request_timestamp
 

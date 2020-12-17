@@ -19,7 +19,6 @@ class DefaultAuthenticatorTest(unittest.TestCase):
         self.assertEqual("aap noot", authenticator.to_canonicalize_header_value(" aap\r\n  noot"))
 
     def test_create_authentication_signature_for_post(self):
-        # TODO change meta info to something more sensible/python-like
         """Tests that the to_data_to_sign function correctly constructs a POST request for multiple headers"""
         authenticator = DefaultAuthenticator("apiKeyId", "secretApiKey", AuthorizationType.V1HMAC)
         http_headers = [RequestHeader("X-GCS-ServerMetaInfo",
@@ -71,8 +70,8 @@ class DefaultAuthenticatorTest(unittest.TestCase):
         self.assertEqual("miC7b0pEJ9Hx5yc4ouC54UoHwAhuPEdkwAN6NALo+Ow=", authentication_signature)
 
     def test_create_simple_authentication_signature(self):
-        """Tests if the default authenticator creates the correct signature"""
-        authenticator = DefaultAuthenticator("apiKeyId", "secretApiKey")
+        """Tests if the default authenticator creates the correct signature (with an authorization type with different casing)."""
+        authenticator = DefaultAuthenticator("apiKeyId", "secretApiKey", "v1hmac")
         headers = [
             RequestHeader("Date", "Wed, 01 Jan 2020 11:00:00 GMT"),
             RequestHeader("X-GCS-ClientMetaInfo", "processed header value"),
@@ -84,6 +83,10 @@ class DefaultAuthenticatorTest(unittest.TestCase):
         authentication_signature = authenticator.create_simple_authentication_signature("DELETE", url, headers)
 
         self.assertEqual("GCS v1HMAC:apiKeyId:zcDsJLRYsh99pqyCFdrVLyLVi+4A+QLis14rEtV8c98=", authentication_signature)
+
+    def test_reject_unknown_authorization_type(self):
+        """Tests if the default authenticator throws an exception if an invalid authorization type is provided."""
+        self.assertRaises(RuntimeError, DefaultAuthenticator, "apiKeyId", "secretApiKey", "invalidAuthorizationType")
 
 
 if __name__ == '__main__':

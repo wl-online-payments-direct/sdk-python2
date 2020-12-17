@@ -36,13 +36,13 @@ class WebhooksHelper:
         self.__validate_api_version(event)
         return event
 
-    def _validate(self, param, request_headers):
+    def _validate(self, body, request_headers):
         """
         Validates the given body using the given request headers.
 
         :raise: SignatureValidationException: If the body could not be validated successfully.
         """
-        self.__validate_body(param, request_headers)
+        self.__validate_body(body, request_headers)
 
     # validation utility methods
 
@@ -88,11 +88,13 @@ class WebhooksHelper:
 
     # general utility methods
 
-    def __validate_api_version(self, event):
+    @staticmethod
+    def __validate_api_version(event):
         if not "v1" == event.api_version:
             raise ApiVersionMismatchException(event.api_version, "v1")
 
-    def __get_header_value(self, request_headers, header_name):
+    @staticmethod
+    def __get_header_value(request_headers, header_name):
         value = None
         for header in request_headers:
             if header_name.lower() == header.name.lower():

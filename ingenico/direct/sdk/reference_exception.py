@@ -7,6 +7,6 @@ class ReferenceException(ApiException):
     non-existing or removed object is trying to be accessed.
     """
 
-    def __init__(self, status_code, response_body, error_id, errors,
+    def __init__(self, status_code, response_body, error_id, error_response,
                  message="the Ingenico ePayments platform returned a reference error response"):
-        super(ReferenceException, self).__init__(status_code, response_body, error_id, errors, message)
+        super(ReferenceException, self).__init__(status_code, response_body, error_id, error_response, message)

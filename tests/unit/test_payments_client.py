@@ -9,7 +9,6 @@ from ingenico.direct.sdk.communication_exception import CommunicationException
 from ingenico.direct.sdk.communicator import Communicator
 from ingenico.direct.sdk.connection import Connection
 from ingenico.direct.sdk.declined_payment_exception import DeclinedPaymentException
-from ingenico.direct.sdk.defaultimpl.authorization_type import AuthorizationType
 from ingenico.direct.sdk.defaultimpl.default_authenticator import DefaultAuthenticator
 from ingenico.direct.sdk.domain.address import Address
 from ingenico.direct.sdk.domain.amount_of_money import AmountOfMoney
@@ -36,7 +35,7 @@ class PaymentsClientTest(unittest.TestCase):
         self.mock_connection = MagicMock(spec=Connection(), autospec=True)
         self.communicator = Communicator(
             api_endpoint="http://localhost",
-            authenticator=DefaultAuthenticator(AuthorizationType.V1HMAC, "admin", "admin"),
+            authenticator=DefaultAuthenticator("admin", "admin"),
             meta_data_provider=MetaDataProvider("Ingenico"),
             connection=self.mock_connection)
 

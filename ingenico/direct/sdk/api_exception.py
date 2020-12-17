@@ -4,17 +4,17 @@ class ApiException(RuntimeError):
     an ID and a list of errors.
     """
 
-    def __init__(self, status_code, response_body, error_id, errors,
+    def __init__(self, status_code, response_body, error_id, error_response,
                  message="the Ingenico ePayments platform returned an error"
                          " response"):
         super(ApiException, self).__init__(message)
         self.__status_code = status_code
         self.__response_body = response_body
         self.__error_id = error_id
-        if errors is None:
-            self.__errors = ()
+        if error_response is None:
+            self.__error_response = ()
         else:
-            self.__errors = errors
+            self.__error_response = error_response
 
     @property
     def status_code(self):
@@ -43,10 +43,17 @@ class ApiException(RuntimeError):
     @property
     def errors(self):
         """
-        :return: The error list received from the Ingenico ePayments platform if
-         available. Never None.
+        This method has been deprecated. Please use "error_response()" instead.
+        :return: The error list received from the Ingenico ePayments platform if available. Never None.
         """
-        return self.__errors
+        return self.error_response()
+
+    @property
+    def error_response(self):
+        """
+        :return: The error list received from the Ingenico ePayments platform if available. Never None.
+        """
+        return self.__error_response
 
     def __str__(self):
         string = super(ApiException, self).__str__()
