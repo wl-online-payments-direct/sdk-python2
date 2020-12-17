@@ -12,8 +12,7 @@ class DeclinedRefundException(DeclinedTransactionException):
                                                           response_body,
                                                           error_response.error_id,
                                                           error_response.errors,
-                                                          DeclinedRefundException.__create_message(
-                                                              error_response))
+                                                          DeclinedRefundException.__create_message(error_response))
         else:
             super(DeclinedRefundException, self).__init__(status_code,
                                                           response_body,
@@ -23,10 +22,7 @@ class DeclinedRefundException(DeclinedTransactionException):
 
     @staticmethod
     def __create_message(error_response=None):
-        if error_response is not None:
-            refund = error_response.refund_result
-        else:
-            refund = None
+        refund = error_response.refund_result if error_response else None
         if refund is not None:
             return "declined refund '" + refund.id + "' with status '" + refund.status + "'"
         else:

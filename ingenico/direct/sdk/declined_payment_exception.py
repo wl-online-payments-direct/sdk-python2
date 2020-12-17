@@ -22,10 +22,7 @@ class DeclinedPaymentException(DeclinedTransactionException):
 
     @staticmethod
     def __create_message(error_response=None):
-        if error_response is not None and error_response.payment_result is not None:
-            payment = error_response.payment_result.payment
-        else:
-            payment = None
+        payment = error_response.payment_result.payment if error_response and error_response.payment_result else None
         if payment is not None:
             return "declined payment '" + payment.id + "' with status '" + payment.status + "'"
         else:
