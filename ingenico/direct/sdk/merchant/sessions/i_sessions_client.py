@@ -1,6 +1,6 @@
 #
 # This class was auto-generated from the API references found at
-# https://support.direct.ingenico.com/documentation/api/reference/index.html/
+# https://support.direct.ingenico.com/documentation/api/reference/
 #
 from abc import ABCMeta, abstractmethod
 
@@ -16,7 +16,7 @@ class ISessionsClient:
         """
         Resource /v2/{merchantId}/sessions - Create session
 
-        See also https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/CreateSessionApi
+        See also https://support.direct.ingenico.com/documentation/api/reference#operation/CreateSessionApi
 
         :param body: :class:`ingenico.direct.sdk.domain.session_request.SessionRequest`
         :param context: :class:`ingenico.direct.sdk.call_context.CallContext`

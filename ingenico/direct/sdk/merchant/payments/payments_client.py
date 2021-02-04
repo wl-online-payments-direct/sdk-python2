@@ -1,6 +1,6 @@
 #
 # This class was auto-generated from the API references found at
-# https://support.direct.ingenico.com/documentation/api/reference/index.html/
+# https://support.direct.ingenico.com/documentation/api/reference/
 #
 from ingenico.direct.sdk.api_resource import ApiResource
 from ingenico.direct.sdk.response_exception import ResponseException
@@ -34,7 +34,7 @@ class PaymentsClient(ApiResource, IPaymentsClient):
         """
         Resource /v2/{merchantId}/payments - Create payment
 
-        See also https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/CreatePaymentApi
+        See also https://support.direct.ingenico.com/documentation/api/reference#operation/CreatePaymentApi
 
         :param body: :class:`ingenico.direct.sdk.domain.create_payment_request.CreatePaymentRequest`
         :param context: :class:`ingenico.direct.sdk.call_context.CallContext`
@@ -68,7 +68,7 @@ class PaymentsClient(ApiResource, IPaymentsClient):
         """
         Resource /v2/{merchantId}/payments/{paymentId} - Get payment
 
-        See also https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/GetPaymentApi
+        See also https://support.direct.ingenico.com/documentation/api/reference#operation/GetPaymentApi
 
         :param payment_id: str
         :param context: :class:`ingenico.direct.sdk.call_context.CallContext`
@@ -103,7 +103,7 @@ class PaymentsClient(ApiResource, IPaymentsClient):
         """
         Resource /v2/{merchantId}/payments/{paymentId}/complete - Complete payment
 
-        See also https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/CompletePaymentApi
+        See also https://support.direct.ingenico.com/documentation/api/reference#operation/CompletePaymentApi
 
         :param payment_id: str
         :param body: :class:`ingenico.direct.sdk.domain.complete_payment_request.CompletePaymentRequest`
@@ -141,7 +141,7 @@ class PaymentsClient(ApiResource, IPaymentsClient):
         """
         Resource /v2/{merchantId}/payments/{paymentId}/cancel - Cancel payment
 
-        See also https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/CancelPaymentApi
+        See also https://support.direct.ingenico.com/documentation/api/reference#operation/CancelPaymentApi
 
         :param payment_id: str
         :param context: :class:`ingenico.direct.sdk.call_context.CallContext`
@@ -177,7 +177,7 @@ class PaymentsClient(ApiResource, IPaymentsClient):
         """
         Resource /v2/{merchantId}/payments/{paymentId}/refund - Refund payment
 
-        See also https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/RefundPaymentApi
+        See also https://support.direct.ingenico.com/documentation/api/reference#operation/RefundPaymentApi
 
         :param payment_id: str
         :param body: :class:`ingenico.direct.sdk.domain.refund_request.RefundRequest`
@@ -215,7 +215,7 @@ class PaymentsClient(ApiResource, IPaymentsClient):
         """
         Resource /v2/{merchantId}/payments/{paymentId}/capture - Capture payment
 
-        See also https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/CapturePaymentApi
+        See also https://support.direct.ingenico.com/documentation/api/reference#operation/CapturePaymentApi
 
         :param payment_id: str
         :param body: :class:`ingenico.direct.sdk.domain.capture_payment_request.CapturePaymentRequest`
@@ -252,7 +252,7 @@ class PaymentsClient(ApiResource, IPaymentsClient):
         """
         Resource /v2/{merchantId}/payments/{paymentId}/captures - Get Captures Api
 
-        See also https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/GetCapturesApi
+        See also https://support.direct.ingenico.com/documentation/api/reference#operation/GetCapturesApi
 
         :param payment_id: str
         :param context: :class:`ingenico.direct.sdk.call_context.CallContext`
@@ -287,7 +287,7 @@ class PaymentsClient(ApiResource, IPaymentsClient):
         """
         Resource /v2/{merchantId}/payments/{paymentId}/refunds - Get Refunds Api
 
-        See also https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/GetRefundsApi
+        See also https://support.direct.ingenico.com/documentation/api/reference#operation/GetRefundsApi
 
         :param payment_id: str
         :param context: :class:`ingenico.direct.sdk.call_context.CallContext`

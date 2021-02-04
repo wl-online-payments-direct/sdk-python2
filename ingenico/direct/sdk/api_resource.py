@@ -1,10 +1,12 @@
 from api_exception import ApiException
 from authorization_exception import AuthorizationException
 from declined_payment_exception import DeclinedPaymentException
+from declined_payout_exception import DeclinedPayoutException
 from declined_refund_exception import DeclinedRefundException
 from direct_exception import DirectException
 from domain.error_response import ErrorResponse
 from domain.payment_error_response import PaymentErrorResponse
+from domain.payout_error_response import PayoutErrorResponse
 from domain.refund_error_response import RefundErrorResponse
 from idempotence_exception import IdempotenceException
 from reference_exception import ReferenceException
@@ -70,9 +72,11 @@ class ApiResource(object):
         """Return a raisable api-exception based on the error object given"""
         if isinstance(error_object, PaymentErrorResponse) and error_object.payment_result is not None:
             return DeclinedPaymentException(status_code=status_code, response_body=body, error_response=error_object)
+        elif isinstance(error_object, PayoutErrorResponse) and error_object.payout_result is not None:
+            return DeclinedPayoutException(status_code=status_code, response_body=body, error_response=error_object)
         elif isinstance(error_object, RefundErrorResponse) and error_object.refund_result is not None:
             return DeclinedRefundException(status_code=status_code, response_body=body, error_response=error_object)
-        if not isinstance(error_object, (PaymentErrorResponse, RefundErrorResponse, ErrorResponse)):
+        if not isinstance(error_object, (PaymentErrorResponse, PayoutErrorResponse, RefundErrorResponse, ErrorResponse)):
             raise ValueError("Unsupported error object encountered: " + error_object.__class__.__name__)
         error_id = error_object.error_id
         errors = error_object.errors

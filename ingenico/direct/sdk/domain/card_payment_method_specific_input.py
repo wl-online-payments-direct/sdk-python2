@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://support.direct.ingenico.com/documentation/api/reference/index.html/
+# https://support.direct.ingenico.com/documentation/api/reference/
 #
 from ingenico.direct.sdk.data_object import DataObject
 from ingenico.direct.sdk.domain.card import Card
@@ -22,6 +22,7 @@ class CardPaymentMethodSpecificInput(DataObject):
     __recurring = None
     __return_url = None
     __skip_authentication = None
+    __skip_soft_decline = None
     __three_d_secure = None
     __token = None
     __tokenize = None
@@ -146,6 +147,22 @@ class CardPaymentMethodSpecificInput(DataObject):
         self.__skip_authentication = value
 
     @property
+    def skip_soft_decline(self):
+        """
+        | * true = Soft Decline retry mechanism will be skipped for this transaction. The transaction will result in "Authorization Declined" status. This setting should be used when skipAuthentication is set to true and the merchant does not want to use Soft Decline retry mechanism.
+        | * false = Soft Decline retry mechanism will not be skipped for this transaction.
+        
+        |  Note: skipSoftDecline defaults to false if empty. This is only possible if your account in our system is setup for 3D Secure authentication and if your configuration in our system allows you to override it per transaction.
+
+        Type: bool
+        """
+        return self.__skip_soft_decline
+
+    @skip_soft_decline.setter
+    def skip_soft_decline(self, value):
+        self.__skip_soft_decline = value
+
+    @property
     def three_d_secure(self):
         """
         | Object containing specific data regarding 3-D Secure
@@ -161,7 +178,7 @@ class CardPaymentMethodSpecificInput(DataObject):
     @property
     def token(self):
         """
-        | ID of the token. This property is populated when the payment was done with a token or when the payment was tokenized.
+        | ID of the token to use to create the payment.
 
         Type: str
         """
@@ -254,6 +271,8 @@ class CardPaymentMethodSpecificInput(DataObject):
             dictionary['returnUrl'] = self.return_url
         if self.skip_authentication is not None:
             dictionary['skipAuthentication'] = self.skip_authentication
+        if self.skip_soft_decline is not None:
+            dictionary['skipSoftDecline'] = self.skip_soft_decline
         if self.three_d_secure is not None:
             dictionary['threeDSecure'] = self.three_d_secure.to_dictionary()
         if self.token is not None:
@@ -292,6 +311,8 @@ class CardPaymentMethodSpecificInput(DataObject):
             self.return_url = dictionary['returnUrl']
         if 'skipAuthentication' in dictionary:
             self.skip_authentication = dictionary['skipAuthentication']
+        if 'skipSoftDecline' in dictionary:
+            self.skip_soft_decline = dictionary['skipSoftDecline']
         if 'threeDSecure' in dictionary:
             if not isinstance(dictionary['threeDSecure'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['threeDSecure']))

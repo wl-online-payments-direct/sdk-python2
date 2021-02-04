@@ -1,6 +1,6 @@
 #
 # This class was auto-generated from the API references found at
-# https://support.direct.ingenico.com/documentation/api/reference/index.html/
+# https://support.direct.ingenico.com/documentation/api/reference/
 #
 from abc import ABCMeta, abstractmethod
 
@@ -16,7 +16,7 @@ class IServicesClient:
         """
         Resource /v2/{merchantId}/services/testconnection - Test connection
 
-        See also https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/TestConnectionApi
+        See also https://support.direct.ingenico.com/documentation/api/reference#operation/TestConnectionApi
 
         :param context: :class:`ingenico.direct.sdk.call_context.CallContext`
         :return: :class:`ingenico.direct.sdk.domain.test_connection.TestConnection`
