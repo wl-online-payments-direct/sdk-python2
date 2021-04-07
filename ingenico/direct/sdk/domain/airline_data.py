@@ -41,6 +41,7 @@ class AirlineData(DataObject):
     def agent_numeric_code(self):
         """
         | Numeric code identifying the agent
+        | This field is used by the following payment products: 840
 
         Type: str
         """
@@ -54,6 +55,7 @@ class AirlineData(DataObject):
     def code(self):
         """
         | Airline numeric code
+        | This field is used by the following payment products: 840
 
         Type: str
         """
@@ -66,6 +68,7 @@ class AirlineData(DataObject):
     @property
     def flight_date(self):
         """
+        | Deprecated: This field is not used by any payment product
         | Date of the Flight
         | Format: YYYYMMDD
 
@@ -94,6 +97,7 @@ class AirlineData(DataObject):
     def invoice_number(self):
         """
         | Airline tracing number
+        | This field is used by the following payment products: cards
 
         Type: str
         """
@@ -106,8 +110,9 @@ class AirlineData(DataObject):
     @property
     def is_e_ticket(self):
         """
-        | * true = The ticket is an E-Ticket
-        | * false = the ticket is not an E-Ticket'
+        | Deprecated: This field is not used by any payment product
+        |  * true = The ticket is an E-Ticket
+        |  * false = the ticket is not an E-Ticket'
 
         Type: bool
         """
@@ -120,8 +125,10 @@ class AirlineData(DataObject):
     @property
     def is_restricted_ticket(self):
         """
-        | * true - Restricted, the ticket is non-refundable
-        | * false - No restrictions, the ticket is (partially) refundable
+        | Indicates if the ticket is refundable or not.
+        |  * true - Restricted, the ticket is non-refundable
+        |  * false - No restrictions, the ticket is (partially) refundable
+        | This field is used by the following payment products: 840
 
         Type: bool
         """
@@ -134,8 +141,9 @@ class AirlineData(DataObject):
     @property
     def is_third_party(self):
         """
-        | * true - The payer is the ticket holder
-        | * false - The payer is not the ticket holder
+        | Deprecated: This field is not used by any payment product
+        |  * true - The payer is the ticket holder
+        |  * false - The payer is not the ticket holder
 
         Type: bool
         """
@@ -150,6 +158,7 @@ class AirlineData(DataObject):
         """
         | This is the date of issue recorded in the airline system In a case of multiple issuances of the same ticket to a cardholder, you should use the last ticket date.
         | Format: YYYYMMDD
+        | This field is used by the following payment products: cards, 840
 
         Type: str
         """
@@ -163,6 +172,7 @@ class AirlineData(DataObject):
     def merchant_customer_id(self):
         """
         | Your ID of the customer in the context of the airline data
+        | This field is used by the following payment products: 840
 
         Type: str
         """
@@ -175,6 +185,7 @@ class AirlineData(DataObject):
     @property
     def name(self):
         """
+        | Deprecated: This field is not used by any payment product
         | Name of the airline
 
         Type: str
@@ -188,6 +199,7 @@ class AirlineData(DataObject):
     @property
     def passenger_name(self):
         """
+        | Deprecated: Use passengers instead
         | Name of passenger
 
         Type: str
@@ -201,7 +213,8 @@ class AirlineData(DataObject):
     @property
     def passengers(self):
         """
-        | Object that holds the data on the individual passengers (this object is used for fraud screening on the Ogone Payment Platform)
+        | Object that holds the data on the individual passengers
+        | This field is used by the following payment products: cards, 840
 
         Type: list[:class:`ingenico.direct.sdk.domain.airline_passenger.AirlinePassenger`]
         """
@@ -214,6 +227,7 @@ class AirlineData(DataObject):
     @property
     def place_of_issue(self):
         """
+        | Deprecated: This field is not used by any payment product
         | Place of issue
         | For sales in the US the last two characters (pos 14-15) must be the US state code.
 
@@ -228,6 +242,7 @@ class AirlineData(DataObject):
     @property
     def pnr(self):
         """
+        | Deprecated: This field is not used by any payment product
         | Passenger name record
 
         Type: str
@@ -242,6 +257,7 @@ class AirlineData(DataObject):
     def point_of_sale(self):
         """
         | IATA point of sale name
+        | This field is used by the following payment products: 840
 
         Type: str
         """
@@ -254,7 +270,8 @@ class AirlineData(DataObject):
     @property
     def pos_city_code(self):
         """
-        | city code of the point of sale
+        | Deprecated: This field is not used by any payment product
+        | City code of the point of sale
 
         Type: str
         """
@@ -267,6 +284,9 @@ class AirlineData(DataObject):
     @property
     def ticket_delivery_method(self):
         """
+        | Deprecated: This field is not used by any payment product
+        | Delivery method of the ticket
+
         Type: str
         """
         return self.__ticket_delivery_method
@@ -283,6 +303,7 @@ class AirlineData(DataObject):
         |  * Form code: A maximum of 3 digits indicating the type of document, the source of issue and the number of coupons it contains
         |  * Serial number: A maximum of 8 digits allocated on a sequential basis, provided that the total number of digits allocated to the form code and serial number shall not exceed ten
         |  * TICKETNUMBER can be replaced with PNR if the ticket number is unavailable
+        | This field is used by the following payment products: cards, 840
 
         Type: str
         """
@@ -296,6 +317,7 @@ class AirlineData(DataObject):
     def total_fare(self):
         """
         | Total fare for all legs on the ticket, excluding taxes and fees. If multiple tickets are purchased, this is the total fare for all tickets
+        | This field is used by the following payment products: 840
 
         Type: int
         """
@@ -309,6 +331,7 @@ class AirlineData(DataObject):
     def total_fee(self):
         """
         | Total fee for all legs on the ticket. If multiple tickets are purchased, this is the total fee for all tickets
+        | This field is used by the following payment products: 840
 
         Type: int
         """
@@ -322,6 +345,7 @@ class AirlineData(DataObject):
     def total_taxes(self):
         """
         | Total taxes for all legs on the ticket. If multiple tickets are purchased, this is the total taxes for all tickets
+        | This field is used by the following payment products: 840
 
         Type: int
         """
@@ -335,6 +359,7 @@ class AirlineData(DataObject):
     def travel_agency_name(self):
         """
         | Name of the travel agency issuing the ticket. For direct airline integration, leave this property blank
+        | This field is used by the following payment products: 840
 
         Type: str
         """
