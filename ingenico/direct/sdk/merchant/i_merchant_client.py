@@ -50,7 +50,7 @@ class IMerchantClient:
     @abstractmethod
     def services(self):
         """
-        Resource /v2/{merchantId}/services/testconnection
+        Resource /v2/{merchantId}/services
 
         :return: :class:`ingenico.direct.sdk.merchant.services.i_services_client.IServicesClient`
         """
