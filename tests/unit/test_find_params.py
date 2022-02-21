@@ -1,7 +1,7 @@
 import unittest
 
-from ingenico.direct.sdk.merchant.productgroups.get_product_groups_params import GetProductGroupsParams
-from ingenico.direct.sdk.merchant.products.get_payment_product_params import GetPaymentProductParams
+from onlinepayments.sdk.merchant.productgroups.get_product_groups_params import GetProductGroupsParams
+from onlinepayments.sdk.merchant.products.get_payment_product_params import GetPaymentProductParams
 from tests.unit.comparable_param import ComparableParam
 
 

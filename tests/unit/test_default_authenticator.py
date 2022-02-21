@@ -1,9 +1,9 @@
 import unittest
 import urlparse
 
-from ingenico.direct.sdk.defaultimpl.authorization_type import AuthorizationType
-from ingenico.direct.sdk.defaultimpl.default_authenticator import DefaultAuthenticator
-from ingenico.direct.sdk.request_header import RequestHeader
+from onlinepayments.sdk.defaultimpl.authorization_type import AuthorizationType
+from onlinepayments.sdk.defaultimpl.default_authenticator import DefaultAuthenticator
+from onlinepayments.sdk.request_header import RequestHeader
 
 
 class DefaultAuthenticatorTest(unittest.TestCase):

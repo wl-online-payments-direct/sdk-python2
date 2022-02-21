@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from ingenico.direct.sdk.log.logging_util import LoggingUtil
+from onlinepayments.sdk.log.logging_util import LoggingUtil
 from tests import file_utils
 
 
@@ -71,7 +71,7 @@ class LoggingUtilTest(unittest.TestCase):
 
     def test_obfuscate_header(self):
         """Tests that any authorization headers get obfuscated, while others do not"""
-        self.obfuscate_header_match("Authorization", "Basic QWxhZGRpbjpPcGVuU2VzYW1l","***")
+        self.obfuscate_header_match("Authorization", "Basic QWxhZGRpbjpPcGVuU2VzYW1l", "***")
         self.obfuscate_header_match("authorization", "Basic QWxhZGRpbjpPcGVuU2VzYW1l", "***")
         self.obfuscate_header_match("AUTHORIZATION", "Basic QWxhZGRpbjpPcGVuU2VzYW1l", "***")
 

@@ -1,12 +1,11 @@
-Ingenico Direct Python SDK
+Online Payments Python SDK
 ==========================
 
 Introduction
 ------------
 
-The Python SDK helps you to communicate with the `Ingenico
-Direct <https://support.direct.ingenico.com/>`__ Server API. Its primary
-features are:
+The Python SDK helps you to communicate with the payment platform server
+API. Its primary features are:
 
 -  convenient Python library for the API calls and responses
 
@@ -20,16 +19,12 @@ features are:
 Its use is demonstrated by an example for each possible call. The
 examples execute a call using the provided API key.
 
-See the `Ingenico Direct Support
-Site <https://support.direct.ingenico.com/documentation/sdk/server/python/>`__
-for more information on how to use the SDK.
-
 Structure of this repository
 ----------------------------
 
 This repository consists out of three main components:
 
-#. The source code of the SDK itself: ``/ingenico/direct/sdk/``
+#. The source code of the SDK itself: ``/onlinepayments/sdk/``
 #. The source code of the SDK unit tests: ``/tests/unit/``
 #. The source code of the example integration tests:
    ``/tests/integration/``
@@ -54,20 +49,20 @@ To install the SDK using pip, execute the following command:
 
 ::
 
-    pip install direct-sdk-python2
+    pip install onlinepayments-sdk-python2
 
 Alternatively, you can install the SDK from a source distribution file:
 
 #. Download the latest version of the Python SDK from GitHub. Choose the
-   ``direct-sdk-python2-x.y.z.zip`` file from the
-   `releases <https://github.com/Ingenico/direct-sdk-python2/releases>`__
+   ``onlinepayments-sdk-python2-x.y.z.zip`` file from the
+   `releases <https://github.com/wl-online-payments-direct/sdk-python2/releases>`__
    page, where ``x.y.z`` is the version number.
 #. Execute the following command in the folder where the SDK was
    downloaded to:
 
    ::
 
-       pip install direct-sdk-python2-x.y.z.zip
+       pip install onlinepayments-sdk-python2-x.y.z.zip
 
 Uninstalling
 ------------
@@ -77,7 +72,7 @@ following command:
 
 ::
 
-    pip uninstall direct-sdk-python2
+    pip uninstall onlinepayments-sdk-python2
 
 The required package can be uninstalled in the same way.
 
@@ -89,9 +84,9 @@ Running tests
   configuration is required.
 | First, some environment variables need to be set:
 
--  ``direct.api.apiKeyId`` for the API key id to use.
--  ``direct.api.secretApiKey`` for the secret API key to use.
--  ``direct.api.merchantId`` for your merchant ID.
+-  ``onlinePayments.api.apiKeyId`` for the API key id to use.
+-  ``onlinePayments.api.secretApiKey`` for the secret API key to use.
+-  ``onlinePayments.api.merchantId`` for your merchant ID.
 
 In order to run the unit and integration tests, the
 `mock <https://pypi.python.org/pypi/mock>`__ backport and
